@@ -1,0 +1,32 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - aws.myorg.io
+  resources:
+  - awsroleassignments
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - aws.myorg.io
+  resources:
+  - awsroleassignments/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - aws.myorg.io
+  resources:
+  - awsroleassignments/status
+  verbs:
+  - get
+  - patch
+  - update
